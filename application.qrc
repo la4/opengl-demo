@@ -1,0 +1,5 @@
+<RCC>
+    <qresource>
+        <file>vertex_shader.vert</file>
+    </qresource>
+</RCC>
