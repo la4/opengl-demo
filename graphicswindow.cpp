@@ -22,13 +22,6 @@ void GraphicsWindow::initialize()
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
-
-    initObjects();
-}
-
-void GraphicsWindow::initObjects()
-{
-    // Here we temporarily create all objects in scene
 }
 
 void GraphicsWindow::render()

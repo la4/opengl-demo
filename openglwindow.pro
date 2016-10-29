@@ -1,8 +1,7 @@
 include(openglwindow.pri)
 
 SOURCES += \
-    main.cpp \
-    render_object.cpp
+    main.cpp
 
 target.path = $$PWD
 INSTALLS += target
@@ -20,5 +19,4 @@ export(copydata.commands)
 QMAKE_EXTRA_TARGETS += first copydata
 
 HEADERS += \
-    render_object.h \
     constants.h
