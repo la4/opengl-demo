@@ -25,7 +25,13 @@ void OpenGLWindow::initializeWindow()
 
     m_gameEngine->setContext(m_context);
     m_gameEngine->setSurface(this);
-    m_gameEngine->initialize(width(), height(), devicePixelRatio(), screen()->refreshRate());
+
+    RenderSettingsInitializations engineSettings;
+    engineSettings.setDevicePixelRatio(devicePixelRatio());
+    engineSettings.setWidth(width());
+    engineSettings.setHeight(height());
+    engineSettings.setRefreshRate(screen()->refreshRate());
+    m_gameEngine->initialize(engineSettings);
 
     if (isExposed())
         m_gameEngine->setStatus(ACTIVE);
@@ -49,15 +55,22 @@ void OpenGLWindow::exposeEvent(QExposeEvent *event)
     }
 }
 
-void keyPressEvent(QKeyEvent *event)
-{
-    m_gameEngine->
+void OpenGLWindow::keyPressEvent( QKeyEvent *event ) {
+    m_gameEngine->onKeyPress( event );
 }
-
-void keyReleaseEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-
+void OpenGLWindow::keyReleaseEvent( QKeyEvent *event ) {
+    m_gameEngine->onKeyRelease( event );
+}
+void OpenGLWindow::mousePressEvent( QMouseEvent *event ) {
+    m_gameEngine->onMousePress( event );
+}
+void OpenGLWindow::mouseReleaseEvent( QMouseEvent *event ) {
+    m_gameEngine->onMouseRelease( event );
+}
+void OpenGLWindow::mouseMoveEvent( QMouseEvent *event ) {
+    m_gameEngine->onMouseMove( event );
+}
+void OpenGLWindow::wheelEvent( QWheelEvent *event ) {
+    m_gameEngine->onWheelInteraction( event );
+}
 

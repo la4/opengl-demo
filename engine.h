@@ -21,7 +21,7 @@ public:
     void setContext(QOpenGLContext *context);
     void setSurface(QSurface *surface);
 
-    void initialize(int width, int height, qreal devicePixelRatio, qreal refreshRate) Q_DECL_OVERRIDE;
+    void initialize( const RenderSettingsInitializations& settings ) Q_DECL_OVERRIDE;
     void render() Q_DECL_OVERRIDE;
 
     // TODO: think about setAnimating presense
@@ -31,17 +31,16 @@ public:
     void renderLater();
     void renderNow();
 
+    void onKeyPress( QKeyEvent *event ) Q_DECL_OVERRIDE;
+    void onKeyRelease( QKeyEvent *event ) Q_DECL_OVERRIDE;
+    void onMousePress( QMouseEvent *event ) Q_DECL_OVERRIDE;
+    void onMouseRelease( QMouseEvent *event ) Q_DECL_OVERRIDE;
+    void onMouseMove( QMouseEvent *event ) Q_DECL_OVERRIDE;
+    void onWheelInteraction( QWheelEvent *event ) Q_DECL_OVERRIDE;
+
 private:
     bool event(QEvent *event) Q_DECL_OVERRIDE;
 
-    void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-    void keyReleaseEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-    void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-    void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
-    void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-
-private:
     engineStatus m_status;
 
     QOpenGLContext *m_context;

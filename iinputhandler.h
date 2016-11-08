@@ -5,12 +5,13 @@
 
 /* USER INPUT HANDLING */
 struct IInputHandler {
-    virtual void keyPressEvent(QKeyEvent *event) = 0;
-    virtual void keyReleaseEvent(QKeyEvent *event) = 0;
-    virtual void mousePressEvent(QMouseEvent *event) = 0;
-    virtual void mouseReleaseEvent(QMouseEvent *event) = 0;
-    virtual void mouseMoveEvent(QMouseEvent *event) = 0;
-    virtual void wheelEvent(QWheelEvent *event) = 0;
+    virtual void onKeyPress( QKeyEvent *event ) = 0;
+    virtual void onKeyRelease( QKeyEvent *event ) = 0;
+    virtual void onMousePress( QMouseEvent *event ) = 0;
+    virtual void onMouseRelease( QMouseEvent *event ) = 0;
+    virtual void onMouseMove( QMouseEvent *event ) = 0;
+    virtual void onWheelInteraction( QWheelEvent *event ) = 0;
+    virtual ~IInputHandler() {}
 };
 
 #endif // IINPUTHANDLER_H

@@ -15,18 +15,18 @@
 #include <vector>
 
 Engine::Engine()
-    : m_context(NULL)
-    , m_surface(NULL)
-    , m_program(NULL)
-    , m_frame(0)
+    : m_context( NULL )
+    , m_surface( NULL )
+    , m_program( NULL )
+    , m_frame( 0 )
 {}
 
-void Engine::initialize(int width, int height, qreal devicePixelRatio, qreal refreshRate)
+void Engine::initialize( const RenderSettingsInitializations& settings )
 {
-    m_renderingWidth = width;
-    m_renderingHeight = height;
-    m_devicePixelRatio = devicePixelRatio;
-    m_refreshRate = refreshRate;
+    m_renderingWidth = settings.width();
+    m_renderingHeight = settings.height();
+    m_devicePixelRatio = settings.devicePixelRatio();
+    m_refreshRate = settings.refreshRate();
 
     srand(time(NULL));
     QString vertexShaderPath = QDir(qApp->applicationDirPath()).absoluteFilePath("shaders/vertex_shader.vert");
@@ -228,37 +228,39 @@ void Engine::setAnimating(bool animating)
     Q_UNUSED(animating)
 }
 
-void Engine::keyPressEvent(QKeyEvent *event)
+
+#pragma mark - IInputHandler // IInputHandler events
+void Engine::onKeyPress( QKeyEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void Engine::keyReleaseEvent(QKeyEvent *event)
+void Engine::onKeyRelease( QKeyEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void Engine::mousePressEvent(QMouseEvent *event)
+void Engine::onMousePress( QMouseEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void Engine::mouseReleaseEvent(QMouseEvent *event)
+void Engine::onMouseRelease( QMouseEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void Engine::mouseMoveEvent(QMouseEvent *event)
+void Engine::onMouseMove( QMouseEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void Engine::wheelEvent(QWheelEvent *event)
+void Engine::onWheelInteraction( QWheelEvent *event )
 {
     Q_UNUSED(event)
     // Currently not processing this event
