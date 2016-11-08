@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include "graphicswindow.h"
+#include "openglwindow.h"
 
 #include <QtGui/QGuiApplication>
 #include <QtGui/QMatrix4x4>
@@ -70,12 +70,12 @@ int main(int argc, char **argv)
     format.setDepthBufferSize(24);
     format.setVersion(3, 3);
 
-    GraphicsWindow window;
+    OpenGLWindow window;
     window.setFormat(format);
     window.resize(640, 480);
     window.show();
 
-    window.setAnimating(true);
+   // window.setAnimating(true);
 
     return app.exec();
 }

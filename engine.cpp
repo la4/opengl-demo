@@ -1,13 +1,33 @@
-#include "graphicswindow.h"
+#include "engine.h"
 
-GraphicsWindow::GraphicsWindow()
-    : m_program(0)
+#include <QtCore/QCoreApplication>
+#include <QtGui/QGuiApplication>
+#include <QtGui/QMatrix4x4>
+
+#include <QtCore/qmath.h>
+#include <QDir>
+#include <QTime>
+
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <iostream>
+#include <vector>
+
+Engine::Engine()
+    : m_context(NULL)
+    , m_surface(NULL)
+    , m_program(NULL)
     , m_frame(0)
-{
-}
+{}
 
-void GraphicsWindow::initialize()
+void Engine::initialize(int width, int height, qreal devicePixelRatio, qreal refreshRate)
 {
+    m_renderingWidth = width;
+    m_renderingHeight = height;
+    m_devicePixelRatio = devicePixelRatio;
+    m_refreshRate = refreshRate;
+
     srand(time(NULL));
     QString vertexShaderPath = QDir(qApp->applicationDirPath()).absoluteFilePath("shaders/vertex_shader.vert");
     QString fragmentShaderPath = QDir(qApp->applicationDirPath()).absoluteFilePath("shaders/fragment_shader.frag");
@@ -22,12 +42,58 @@ void GraphicsWindow::initialize()
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+
+    QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest)); // Starting point for rendering loop
 }
 
-void GraphicsWindow::render()
+void Engine::setStatus(engineStatus newStatus)
 {
-    const qreal retinaScale = devicePixelRatio();
-    glViewport(0, 0, width() * retinaScale, height() * retinaScale);
+    m_status = newStatus;
+}
+
+void Engine::setContext(QOpenGLContext *context)
+{
+    m_context = context;
+}
+
+void Engine::setSurface(QSurface *surface)
+{
+    m_surface = surface;
+}
+
+bool Engine::event(QEvent *event)
+{
+    switch (event->type()) {
+    case QEvent::UpdateRequest:
+        renderNow();
+        return true;
+    default:
+        return QObject::event(event);
+    }
+}
+
+
+void Engine::renderLater()
+{
+    QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest));
+}
+
+void Engine::renderNow()
+{
+    if (m_status != ACTIVE)
+        return;
+
+    render();
+
+    m_context->swapBuffers(m_surface);
+
+    renderLater();
+}
+
+void Engine::render()
+{
+    const qreal retinaScale = m_devicePixelRatio;
+    glViewport(0, 0, m_renderingWidth * retinaScale, m_renderingHeight * retinaScale);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -47,8 +113,8 @@ void GraphicsWindow::render()
     QMatrix4x4 matrix;
 
     matrix.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
-    matrix.translate(0, -2, -3 - std::abs(50.0f * sin(m_frame / screen()->refreshRate())));
-    matrix.rotate(100.0f * m_frame / screen()->refreshRate(), 1, 0, 0);
+    matrix.translate(0, -2, -3 - std::abs(50.0f * sin(m_frame / m_refreshRate)));
+    matrix.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
 
     m_program->setUniformValue(m_matrixUniform, matrix);
 
@@ -137,8 +203,8 @@ void GraphicsWindow::render()
     QMatrix4x4 matrix2;
 
     matrix2.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
-    matrix2.translate(0, 2, -3 - std::abs(50.0f * cos(m_frame / screen()->refreshRate())));
-    matrix2.rotate(100.0f * m_frame / screen()->refreshRate(), 1, 0, 0);
+    matrix2.translate(0, 2, -3 - std::abs(50.0f * cos(m_frame / m_refreshRate)));
+    matrix2.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
 
     m_program->setUniformValue(m_matrixUniform, matrix2);
 
@@ -150,4 +216,50 @@ void GraphicsWindow::render()
     m_program->release();
 
     ++m_frame;
+}
+
+void Engine::updateAnimation(int timeStep)
+{
+    Q_UNUSED(timeStep)
+}
+
+void Engine::setAnimating(bool animating)
+{
+    Q_UNUSED(animating)
+}
+
+void Engine::keyPressEvent(QKeyEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
+}
+
+void Engine::keyReleaseEvent(QKeyEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
+}
+
+void Engine::mousePressEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
+}
+
+void Engine::mouseReleaseEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
+}
+
+void Engine::mouseMoveEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
+}
+
+void Engine::wheelEvent(QWheelEvent *event)
+{
+    Q_UNUSED(event)
+    // Currently not processing this event
 }
