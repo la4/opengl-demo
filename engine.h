@@ -7,6 +7,7 @@
 
 #include "irenderingengine.h"
 #include "iinputhandler.h"
+#include  "iprimitiverenderobject.h"
 
 enum engineStatus {
     ACTIVE,
@@ -57,6 +58,9 @@ private:
 
     QOpenGLShaderProgram *m_program;
     int m_frame;
+
+    // Render objects
+    std::vector<IPrimitiveRenderObject*> m_renderingObjects;
 };
 
 #endif // ENGINE_H
