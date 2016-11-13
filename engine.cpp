@@ -177,23 +177,16 @@ void Engine::render()
     m_program->bind();
 
     QMatrix4x4 matrix;
-
-    matrix.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
-    matrix.translate(0, -2, -3 - std::abs(50.0f * sin(m_frame / m_refreshRate)));
-    matrix.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
-
     m_program->setUniformValue(m_matrixUniform, matrix);
 
 
-    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, 0, m_renderingObjects.at(0)->vertices());
-    glVertexAttribPointer(m_colAttr, 3, GL_FLOAT, GL_FALSE, 0, m_renderingObjects.at(0)->colors());
+    IPrimitiveRenderObject * objectToRender = m_renderingObjects.at(0);
+    glVertexAttribPointer(m_posAttr, 3, GL_FLOAT, GL_FALSE, 0, objectToRender->vertices());
+    glVertexAttribPointer(m_colAttr, 3, GL_FLOAT, GL_FALSE, 0, objectToRender->colors());
 
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
-
-
-    IPrimitiveRenderObject * objectToRender = m_renderingObjects.at(0);
     glDrawElements(objectToRender->primitiveType(),
                    objectToRender->indicesCount(),
                    GL_UNSIGNED_BYTE,
@@ -201,11 +194,6 @@ void Engine::render()
 
 
     QMatrix4x4 matrix2;
-
-    matrix2.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
-    matrix2.translate(0, 2, -3 - std::abs(50.0f * cos(m_frame / m_refreshRate)));
-    matrix2.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
-
     m_program->setUniformValue(m_matrixUniform, matrix2);
 
 

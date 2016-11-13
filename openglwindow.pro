@@ -18,5 +18,4 @@ export(first.depends)
 export(copydata.commands)
 QMAKE_EXTRA_TARGETS += first copydata
 
-HEADERS += \
-    constants.h
+HEADERS +=

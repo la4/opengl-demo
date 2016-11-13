@@ -1,9 +1,5 @@
 #include "cube.h"
 
-Cube::Cube() {
-
-}
-
 Cube::Cube(std::vector<float> vertices,
            std::vector<GLubyte> indices,
            std::vector<float> colors,
@@ -40,4 +36,49 @@ GLubyte Cube::verticesCount() const {
 
 GLenum Cube::primitiveType() const {
     return m_primitiveType;
+}
+
+
+#pragma mark - ITSRObject
+void Cube::setEulerRotationInDegrees(int aroundX, int aroundY, int aroundZ) {
+    Q_UNUSED(aroundX)
+    Q_UNUSED(aroundY)
+    Q_UNUSED(aroundZ)
+}
+void Cube::setEulerRotationInRadians(float aroundX, float aroundY, float aroundZ) {
+    Q_UNUSED(aroundX)
+    Q_UNUSED(aroundY)
+    Q_UNUSED(aroundZ)
+}
+
+void Cube::setQuaternionRotation(QQuaternion quat) {
+    Q_UNUSED(quat)
+}
+
+
+void Cube::setScale(float scaleFactor) {
+    Q_UNUSED(scaleFactor)
+}
+void Cube::setScale(float xAxisScaleFactor, float yAxisScaleFactor, float zAxisScaleFactor) {
+    Q_UNUSED(xAxisScaleFactor)
+    Q_UNUSED(yAxisScaleFactor)
+    Q_UNUSED(zAxisScaleFactor)
+}
+
+
+void Cube::setTranslate(QVector3D byVector) {
+    Q_UNUSED(byVector)
+}
+void Cube::setTranslate(float byX, float byY, float byZ) {
+    Q_UNUSED(byX)
+    Q_UNUSED(byY)
+    Q_UNUSED(byZ)
+}
+
+
+QVector3D Cube::pivotPoint() {
+    return m_pivotPoint;
+}
+QVector3D Cube::position() {
+    return m_inWorldPos;
 }
