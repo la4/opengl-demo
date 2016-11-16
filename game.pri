@@ -5,7 +5,8 @@ RESOURCES =
 SOURCES += $$PWD/openglwindow.cpp \
     $$PWD/engine.cpp \
     $$PWD/rendersettingsinitializations.cpp \
-    $$PWD/cube.cpp
+    $$PWD/cube.cpp \
+    $$PWD/game.cpp
 HEADERS += $$PWD/openglwindow.h \
     $$PWD/irenderingengine.h \
     $$PWD/engine.h \
@@ -13,7 +14,8 @@ HEADERS += $$PWD/openglwindow.h \
     $$PWD/rendersettingsinitializations.h \
     $$PWD/cube.h \
     $$PWD/iprimitiverenderobject.h \
-    $$PWD/itsrobject.h
+    $$PWD/itsrobject.h \
+    $$PWD/game.h
 
 DISTFILES += \
     $$PWD/vertex_shader.vert

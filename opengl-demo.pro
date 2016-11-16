@@ -1,4 +1,4 @@
-include(openglwindow.pri)
+include(game.pri)
 
 SOURCES += \
     main.cpp
@@ -12,7 +12,7 @@ DISTFILES += \
     shaders/fragment_shader.frag \
     shaders/vertex_shader.vert
 
-copydata.commands = $(COPY_DIR) $$PWD/shaders $$OUT_PWD/openglwindow.app/Contents/MacOS
+copydata.commands = $(COPY_DIR) $$PWD/shaders $$OUT_PWD/opengl-demo.app/Contents/MacOS
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
