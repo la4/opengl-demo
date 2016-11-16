@@ -1,3 +1,6 @@
+#ifndef OPENGL_WINDOW_H
+#define OPENGL_WINDOW_H
+
 #include <QtGui/QWindow>
 #include <QtGui/QOpenGLFunctions>
 #include <QScreen>
@@ -32,3 +35,5 @@ private:
     Engine *m_gameEngine;
     QOpenGLContext *m_context;
 };
+
+#endif // OPENGL_WINDOW_H

@@ -61,21 +61,11 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "game.h"
+
 int main(int argc, char **argv)
 {
-    QGuiApplication app(argc, argv);
+    Game gameApplication;
 
-    QSurfaceFormat format;
-    format.setSamples(16);
-    format.setDepthBufferSize(24);
-    format.setVersion(3, 3);
-
-    OpenGLWindow window;
-    window.setFormat(format);
-    window.resize(640, 480);
-    window.show();
-
-   // window.setAnimating(true);
-
-    return app.exec();
+    return gameApplication.execute(argc, argv);
 }
