@@ -22,7 +22,7 @@ public:
     void setContext(QOpenGLContext *context);
     void setSurface(QSurface *surface);
 
-    void initialize( const RenderSettingsInitializations& settings ) Q_DECL_OVERRIDE;
+    void initialize(const RenderSettingsInitializations& settings) Q_DECL_OVERRIDE;
     void render() Q_DECL_OVERRIDE;
 
     // TODO: think about setAnimating presense

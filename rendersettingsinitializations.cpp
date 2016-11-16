@@ -1,9 +1,10 @@
 #include "rendersettingsinitializations.h"
 
-RenderSettingsInitializations::RenderSettingsInitializations() : m_width(NotInitialized),
-                                                                 m_height(NotInitialized),
-                                                                 m_devicePixelRatio(NotInitialized),
-                                                                 m_refreshRate(NotInitialized)
+RenderSettingsInitializations::RenderSettingsInitializations()
+    : m_width(NotInitialized)
+    , m_height(NotInitialized)
+    , m_devicePixelRatio(NotInitialized)
+    , m_refreshRate(NotInitialized)
 {
 }
 

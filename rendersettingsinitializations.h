@@ -13,10 +13,10 @@ public:
     RenderSettingsInitializations();
 
     // Setters
-    void setWidth( int newWidth );
-    void setHeight( int newHeight );
-    void setDevicePixelRatio( qreal newDevicePixelRatio );
-    void setRefreshRate( qreal newRefreshRate );
+    void setWidth(int newWidth);
+    void setHeight(int newHeight);
+    void setDevicePixelRatio(qreal newDevicePixelRatio);
+    void setRefreshRate(qreal newRefreshRate);
 
     // Getters
     int width() const;
