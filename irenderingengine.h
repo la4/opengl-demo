@@ -5,10 +5,10 @@
 #include "rendersettingsinitializations.h"
 
 struct IRenderingEngine{
-    virtual void initialize( const RenderSettingsInitializations& settings ) = 0;
+    virtual void initialize(const RenderSettingsInitializations& settings) = 0;
     virtual void render() = 0;
-    virtual void updateAnimation( int timeStep ) = 0;
-    virtual void setAnimating( bool animating ) = 0;
+    virtual void updateAnimation(int timeStep) = 0;
+    virtual void setAnimating(bool animating) = 0;
     virtual ~IRenderingEngine() {}
 };
 

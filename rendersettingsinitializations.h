@@ -4,7 +4,7 @@
 #include <QtGui/qsurface.h>
 
 enum settingStatus {
-    NOT_INITIALIZED = -1
+    NotInitialized = -1
 };
 
 class RenderSettingsInitializations

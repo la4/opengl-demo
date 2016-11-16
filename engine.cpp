@@ -17,10 +17,10 @@
 #include "cube.h" // TEMPORARY
 
 Engine::Engine()
-    : m_context( NULL )
-    , m_surface( NULL )
-    , m_program( NULL )
-    , m_frame( 0 )
+    : m_context(NULL)
+    , m_surface(NULL)
+    , m_program(NULL)
+    , m_frame(0)
 {
     // WARNING: TEMPORARY EXPERIMENT, SETTING RENDERING OBJECTS HAVE TO BE OUTSIDE THE ENGINE
 
@@ -87,7 +87,7 @@ Engine::Engine()
 
 }
 
-void Engine::initialize( const RenderSettingsInitializations& settings )
+void Engine::initialize(const RenderSettingsInitializations& settings)
 {
     m_renderingWidth = settings.width();
     m_renderingHeight = settings.height();

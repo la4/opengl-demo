@@ -55,22 +55,22 @@ void OpenGLWindow::exposeEvent(QExposeEvent *event)
     }
 }
 
-void OpenGLWindow::keyPressEvent( QKeyEvent *event ) {
-    m_gameEngine->onKeyPress( event );
+void OpenGLWindow::keyPressEvent(QKeyEvent *event) {
+    m_gameEngine->onKeyPress(event);
 }
-void OpenGLWindow::keyReleaseEvent( QKeyEvent *event ) {
-    m_gameEngine->onKeyRelease( event );
+void OpenGLWindow::keyReleaseEvent(QKeyEvent *event) {
+    m_gameEngine->onKeyRelease(event);
 }
-void OpenGLWindow::mousePressEvent( QMouseEvent *event ) {
-    m_gameEngine->onMousePress( event );
+void OpenGLWindow::mousePressEvent(QMouseEvent *event) {
+    m_gameEngine->onMousePress(event);
 }
-void OpenGLWindow::mouseReleaseEvent( QMouseEvent *event ) {
-    m_gameEngine->onMouseRelease( event );
+void OpenGLWindow::mouseReleaseEvent(QMouseEvent *event) {
+    m_gameEngine->onMouseRelease(event);
 }
-void OpenGLWindow::mouseMoveEvent( QMouseEvent *event ) {
-    m_gameEngine->onMouseMove( event );
+void OpenGLWindow::mouseMoveEvent(QMouseEvent *event) {
+    m_gameEngine->onMouseMove(event);
 }
-void OpenGLWindow::wheelEvent( QWheelEvent *event ) {
-    m_gameEngine->onWheelInteraction( event );
+void OpenGLWindow::wheelEvent(QWheelEvent *event) {
+    m_gameEngine->onWheelInteraction(event);
 }
 

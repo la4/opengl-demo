@@ -32,12 +32,12 @@ public:
     void renderLater();
     void renderNow();
 
-    void onKeyPress( QKeyEvent *event ) Q_DECL_OVERRIDE;
-    void onKeyRelease( QKeyEvent *event ) Q_DECL_OVERRIDE;
-    void onMousePress( QMouseEvent *event ) Q_DECL_OVERRIDE;
-    void onMouseRelease( QMouseEvent *event ) Q_DECL_OVERRIDE;
-    void onMouseMove( QMouseEvent *event ) Q_DECL_OVERRIDE;
-    void onWheelInteraction( QWheelEvent *event ) Q_DECL_OVERRIDE;
+    void onKeyPress(QKeyEvent *event) Q_DECL_OVERRIDE;
+    void onKeyRelease(QKeyEvent *event) Q_DECL_OVERRIDE;
+    void onMousePress(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void onMouseRelease(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void onMouseMove(QMouseEvent *event) Q_DECL_OVERRIDE;
+    void onWheelInteraction(QWheelEvent *event) Q_DECL_OVERRIDE;
 
 private:
     bool event(QEvent *event) Q_DECL_OVERRIDE;
