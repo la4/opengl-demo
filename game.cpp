@@ -1,16 +1,12 @@
 #include "game.h"
 
-Game::Game()
-{
-
+Game::Game() {
 }
 
-Game::~Game()
-{
+Game::~Game() {
 }
 
-int Game::execute(int argc, char **argv)
-{
+int Game::execute(int argc, char **argv) {
     QGuiApplication guiApp(argc, argv);
 
     QSurfaceFormat format;

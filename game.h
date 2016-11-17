@@ -8,10 +8,19 @@
 class Game
 {
 public:
+    static Game& mainInstance() {
+        static Game gameInstance;
+        return gameInstance;
+    }
+
+    int execute(int argc, char **argv);
+
+private:
     Game();
     ~Game();
 
-    static int execute(int argc, char **argv);
+    Game(Game const&) = delete;
+    Game& operator= (Game const&) = delete;
 };
 
 #endif // GAME_H

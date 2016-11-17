@@ -65,7 +65,6 @@
 
 int main(int argc, char **argv)
 {
-    Game gameApplication;
-
+    Game& gameApplication = Game::mainInstance();
     return gameApplication.execute(argc, argv);
 }
