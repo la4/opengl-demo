@@ -6,8 +6,8 @@
 #include "openglwindow.h"
 
 class Game
-{
-public:
+    {
+    public:
     static Game& mainInstance() {
         static Game gameInstance;
         return gameInstance;

@@ -4,7 +4,7 @@
 #include <QtGui/QWindow>
 #include <QtGui/QOpenGLFunctions>
 #include <QScreen>
-#include "engine.h"
+#include "src/engine/coreengine/engine.h"
 
 QT_BEGIN_NAMESPACE
 class QOpenGLContext;

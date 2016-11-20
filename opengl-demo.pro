@@ -10,14 +10,11 @@ INSTALLS += target
 QMAKE_MAC_SDK = macosx10.12
 
 DISTFILES += \
-    src/shaders/fragment_shader.frag \
-    src/shaders/vertex_shader.vert \
+    src/engine/renderingengineshaders/fragment_shader.frag \
+    src/engine/renderingengineshaders/vertex_shader.vert \
 
-
-copydata.commands = $(COPY_DIR) $$PWD/src/shaders $$OUT_PWD/opengl-demo.app/Contents/MacOS
+copydata.commands = $(COPY_DIR) $$PWD/src/engine/renderingengine/shaders $$OUT_PWD/opengl-demo.app/Contents/MacOS
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
 QMAKE_EXTRA_TARGETS += first copydata
-
-HEADERS +=
