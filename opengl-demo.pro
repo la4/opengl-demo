@@ -1,7 +1,8 @@
-include(game.pri)
+include(src/game/game.pri)
+include(src/engine/engine.pri)
 
 SOURCES += \
-    main.cpp
+    src/main.cpp
 
 target.path = $$PWD
 INSTALLS += target
@@ -9,10 +10,11 @@ INSTALLS += target
 QMAKE_MAC_SDK = macosx10.12
 
 DISTFILES += \
-    shaders/fragment_shader.frag \
-    shaders/vertex_shader.vert
+    src/shaders/fragment_shader.frag \
+    src/shaders/vertex_shader.vert \
 
-copydata.commands = $(COPY_DIR) $$PWD/shaders $$OUT_PWD/opengl-demo.app/Contents/MacOS
+
+copydata.commands = $(COPY_DIR) $$PWD/src/shaders $$OUT_PWD/opengl-demo.app/Contents/MacOS
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)
