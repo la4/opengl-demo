@@ -4,20 +4,19 @@
 #include <QtGui/QWindow>
 #include <QtGui/QOpenGLFunctions>
 #include <QScreen>
-#include "src/engine/coreengine/engine.h"
+#include "coreengine.h"
 
 QT_BEGIN_NAMESPACE
 class QOpenGLContext;
-class QOpenGLPaintDevice;
 QT_END_NAMESPACE
 
-class OpenGLWindow : public QWindow, protected QOpenGLFunctions
+class GameWindow : public QWindow, protected QOpenGLFunctions
 {
     Q_OBJECT
 public:
-    explicit OpenGLWindow(QWindow *parent = 0);
+    explicit GameWindow(QWindow *parent = 0);
 
-    virtual void initializeWindow();
+    virtual void initialize();
 
 protected:
     void exposeEvent(QExposeEvent *event) Q_DECL_OVERRIDE;
@@ -30,9 +29,9 @@ protected:
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    bool needsInitialize;
+    bool m_needsInitialize;
 
-    Engine *m_gameEngine;
+    CoreEngine *m_coreEngine;
     QOpenGLContext *m_context;
 };
 

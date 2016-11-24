@@ -3,7 +3,7 @@
 
 #include <QKeyEvent>
 
-/* USER INPUT HANDLING */
+/* USER GAME INPUT */
 struct IInputHandler {
     virtual void onKeyPress(QKeyEvent *event) = 0;
     virtual void onKeyRelease(QKeyEvent *event) = 0;

@@ -3,7 +3,7 @@
 
 #include <QtGui/QGuiApplication>
 
-#include "openglwindow.h"
+#include "gamewindow.h"
 
 class Game
     {
