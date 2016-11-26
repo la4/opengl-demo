@@ -2,11 +2,9 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/iinputhandler.h \
-    $$PWD/coreengine.h \
-    $$PWD/gamewindow.h
+    $$PWD/coreengine.h
 
 SOURCES += \
-    $$PWD/coreengine.cpp \
-    $$PWD/gamewindow.cpp
+    $$PWD/coreengine.cpp
 
 

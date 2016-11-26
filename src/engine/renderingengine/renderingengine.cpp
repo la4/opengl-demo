@@ -20,8 +20,7 @@ RenderingEngine::RenderingEngine()
     : m_context(NULL)
     , m_surface(NULL)
     , m_program(NULL)
-    , m_frame(0)
-{
+    , m_frame(0) {
     // TODO: move scene setting outside of the engine (to Game)
     float tempVertices[] = {-1.0f, 1.0f, 1.0f, //1
                              1.0f, 1.0f, 1.0f, //2
@@ -83,8 +82,7 @@ RenderingEngine::RenderingEngine()
                                 ));
 }
 
-void RenderingEngine::initialize(const RenderSettingsInitializations& renderSettings)
-{
+void RenderingEngine::initialize(const RenderSettingsInitializations& renderSettings) {
     m_renderingWidth = renderSettings.width();
     m_renderingHeight = renderSettings.height();
     m_devicePixelRatio = renderSettings.devicePixelRatio();
@@ -106,8 +104,7 @@ void RenderingEngine::initialize(const RenderSettingsInitializations& renderSett
     glDepthFunc(GL_LESS);
 }
 
-void RenderingEngine::render()
-{
+void RenderingEngine::render() {
     const qreal retinaScale = m_devicePixelRatio;
     glViewport(0, 0, m_renderingWidth * retinaScale, m_renderingHeight * retinaScale);
 
@@ -126,6 +123,10 @@ void RenderingEngine::render()
     m_program->bind();
 
     QMatrix4x4 matrix;
+    matrix.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
+    matrix.translate(0, -2, -3 - std::abs(50.0f * sin(m_frame / m_refreshRate)));
+    matrix.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
+
     m_program->setUniformValue(m_matrixUniform, matrix);
 
 
@@ -143,6 +144,10 @@ void RenderingEngine::render()
 
 
     QMatrix4x4 matrix2;
+    matrix2.perspective(60.0f, 4.0f/3.0f, 0.1f, 100.0f);
+    matrix2.translate(0, 2, -3 - std::abs(50.0f * cos(m_frame / m_refreshRate)));
+    matrix2.rotate(100.0f * m_frame / m_refreshRate, 1, 0, 0);
+
     m_program->setUniformValue(m_matrixUniform, matrix2);
 
 
@@ -161,12 +166,10 @@ void RenderingEngine::render()
     m_context->swapBuffers(m_surface);
 }
 
-void RenderingEngine::setContext(QOpenGLContext *context)
-{
+void RenderingEngine::setContext(QOpenGLContext *context) {
     m_context = context;
 }
 
-void RenderingEngine::setSurface(QSurface *surface)
-{
+void RenderingEngine::setSurface(QSurface *surface) {
     m_surface = surface;
 }

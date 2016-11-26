@@ -63,8 +63,9 @@
 
 #include "game.h"
 
-int main(int argc, char **argv)
-{
-    Game& gameApplication = Game::mainInstance();
-    return gameApplication.execute(argc, argv);
+int main(int argc, char **argv) {
+
+    Game& gameApplication = Game::mainInstance(argc, argv);
+
+    return gameApplication.execute();
 }

@@ -14,14 +14,12 @@
 #include <iostream>
 #include <vector>
 
-CoreEngine::CoreEngine()
-{
+CoreEngine::CoreEngine() {
     m_renderingEngine = new RenderingEngine();
     m_physicsEngine = new PhysicsEngine();
 }
 
-void CoreEngine::initialize(const RenderSettingsInitializations& renderSettings)
-{
+void CoreEngine::initialize(const RenderSettingsInitializations& renderSettings) {
     m_renderingEngine->initialize(renderSettings);
     //m_physicsEngine->initialize();
 
@@ -32,8 +30,7 @@ void CoreEngine::initialize(const RenderSettingsInitializations& renderSettings)
  *                            GAME LOOP                             *
  ********************************************************************/
 
-bool CoreEngine::event(QEvent *event)
-{
+bool CoreEngine::event(QEvent *event) {
     switch (event->type()) {
     case QEvent::UpdateRequest:
         gameLoopCycle();
@@ -43,13 +40,11 @@ bool CoreEngine::event(QEvent *event)
     }
 }
 
-void CoreEngine::postLoopEvent()
-{
+void CoreEngine::postLoopEvent() {
     QCoreApplication::postEvent(this, new QEvent(QEvent::UpdateRequest));
 }
 
-void CoreEngine::gameLoopCycle()
-{
+void CoreEngine::gameLoopCycle() {
     // TODO: add proper game loop with frame skipping and vsync
     if (m_status != ACTIVE)
         return;
@@ -63,55 +58,46 @@ void CoreEngine::gameLoopCycle()
  *                                END                               *
  ********************************************************************/
 
-void CoreEngine::setStatus(engineStatus newStatus)
-{
+void CoreEngine::setStatus(engineStatus newStatus) {
     m_status = newStatus;
 }
 
-void CoreEngine::passContextToRenderingEngine(QOpenGLContext *context)
-{
+void CoreEngine::passContextToRenderingEngine(QOpenGLContext *context) {
     m_renderingEngine->setContext(context);
 }
 
-void CoreEngine::passSurfaceToRenderingEngine(QSurface *surface)
-{
+void CoreEngine::passSurfaceToRenderingEngine(QSurface *surface) {
     m_renderingEngine->setSurface(surface);
 }
 
 // TODO: input handling should be probably delegated to PhysicsEngine as being related to modifying game logic
 #pragma mark - IInputHandler // IInputHandler events
-void CoreEngine::onKeyPress( QKeyEvent *event )
-{
+void CoreEngine::onKeyPress( QKeyEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void CoreEngine::onKeyRelease( QKeyEvent *event )
-{
+void CoreEngine::onKeyRelease( QKeyEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void CoreEngine::onMousePress( QMouseEvent *event )
-{
+void CoreEngine::onMousePress( QMouseEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void CoreEngine::onMouseRelease( QMouseEvent *event )
-{
+void CoreEngine::onMouseRelease( QMouseEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void CoreEngine::onMouseMove( QMouseEvent *event )
-{
+void CoreEngine::onMouseMove( QMouseEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }
 
-void CoreEngine::onWheelInteraction( QWheelEvent *event )
-{
+void CoreEngine::onWheelInteraction( QWheelEvent *event ) {
     Q_UNUSED(event)
     // Currently not processing this event
 }

@@ -4,22 +4,24 @@ RenderSettingsInitializations::RenderSettingsInitializations()
     : m_width(NotInitialized)
     , m_height(NotInitialized)
     , m_devicePixelRatio(NotInitialized)
-    , m_refreshRate(NotInitialized)
-{
+    , m_refreshRate(NotInitialized) {
 }
 
 void RenderSettingsInitializations::setWidth(int newWidth) {
     // Some validation might be here
     this->m_width = newWidth;
 }
+
 void RenderSettingsInitializations::setHeight(int newHeight) {
     // Some validation might be here
     this->m_height = newHeight;
 }
+
 void RenderSettingsInitializations::setDevicePixelRatio(qreal newDevicePixelRatio) {
     // Some validation might be here
     this->m_devicePixelRatio = newDevicePixelRatio;
 }
+
 void RenderSettingsInitializations::setRefreshRate(qreal newRefreshRate) {
     // Some validation might be here
     this->m_refreshRate = newRefreshRate;
@@ -28,12 +30,15 @@ void RenderSettingsInitializations::setRefreshRate(qreal newRefreshRate) {
 int RenderSettingsInitializations::width() const {
     return m_width;
 }
+
 int RenderSettingsInitializations::height() const {
     return m_height;
 }
+
 qreal RenderSettingsInitializations::devicePixelRatio() const {
     return m_devicePixelRatio;
 }
+
 qreal RenderSettingsInitializations::refreshRate() const {
     return m_refreshRate;
 }
