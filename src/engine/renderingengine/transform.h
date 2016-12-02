@@ -6,6 +6,11 @@
 class RotationValue
 {
 public:
+    RotationValue() {
+        angle = 0.0f;
+        rotVec = QVector3D(0.0, 0.0, 0.0);
+    }
+
     RotationValue(float angle, QVector3D rotVec) {
         this->rotVec = rotVec;
         this->angle = angle;
@@ -20,8 +25,8 @@ class Transform
 public:
     Transform();
 
-    void rotate(QVector3D rotation);
-    void rotate(float x, float y, float z);
+    void rotate(float angle, QVector3D rotation);
+    void rotate(float angle, float x, float y, float z);
 
     void scale(QVector3D scaleFactor);
     void scale(float scaleFactor);
@@ -47,6 +52,7 @@ public:
     // TODO: add quaternions and pivot point
 
     QMatrix4x4 getTransformation();
+
 
 private:
     QVector3D m_position;

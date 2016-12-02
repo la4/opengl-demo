@@ -8,6 +8,7 @@
 #include "iinputhandler.h"
 #include "renderingengine.h"
 #include "physicsengine.h"
+#include "scene.h"
 
 enum engineStatus { // TODO: Do we need this?
     ACTIVE,
@@ -22,6 +23,7 @@ public:
     void initialize(const RenderSettingsInitializations& renderSettings);
 
     void setStatus(engineStatus newStatus);
+    void setScene(Scene *scene);
 
     void passContextToRenderingEngine(QOpenGLContext *context);
     void passSurfaceToRenderingEngine(QSurface *surface);
@@ -39,6 +41,8 @@ private:
     void gameLoopCycle();
 
     engineStatus m_status;
+
+    Scene *m_scene;
 
     RenderingEngine *m_renderingEngine;
     PhysicsEngine *m_physicsEngine; // Currently it's a placeholder

@@ -1,85 +1,85 @@
 #include "transform.h"
 
 Transform::Transform() {
-
+    m_scale = QVector3D(1.0, 1.0, 1.0);
+    m_position = QVector3D(0.0, 0.0, 0.0);
 }
 
-void rotate(QVector3D rotation) {
-    m_rotation += rotation;
+void Transform::rotate(float angle, QVector3D rotation) {
+    // Override += for RotationValue or find a built in class for this
 }
 
-void rotate(float x, float y, float z) {
-    m_rotation += QVector3D(x, y, z);
+void Transform::rotate(float angle, float x, float y, float z) {
+    // Override += for RotationValue or find a built in class for this
 }
 
-void scale(QVector3D scaleFactor) {
+void Transform::scale(QVector3D scaleFactor) {
     m_scale += scaleFactor;
 }
 
-void scale(float scaleFactor) {
+void Transform::scale(float scaleFactor) {
     m_scale += QVector3D(scaleFactor, scaleFactor, scaleFactor);
 }
 
-void scale(float x, float y, float z) {
+void Transform::scale(float x, float y, float z) {
     m_scale += QVector3D(x, y, z);
 }
 
-void move(QVector3D shift) {
+void Transform::move(QVector3D shift) {
     m_position += shift;
 }
 
-void move(float x, float y, float z) {
+void Transform::move(float x, float y, float z) {
     m_position += QVector3D(x, y, z);
 }
 
-RotationValue getRotation() {
+RotationValue Transform::getRotation() {
     return m_rotation;
 }
 
-void setRotation(float angle, float x, float y, float z);
-
-void setRotation(RotationValue rotation) {
+void Transform::setRotation(RotationValue rotation) {
     m_rotation = rotation;
 }
 
-void setRotation(float angle, QVector3D rotVec) {
+void Transform::setRotation(float angle, QVector3D rotVec) {
     m_rotation = RotationValue(angle, rotVec);
 }
 
-void setRotation(float x, float y, float z) {
+void Transform::setRotation(float angle, float x, float y, float z) {
     m_rotation = RotationValue(angle, QVector3D(x, y, z));
 }
 
-QVector3D getScale() {
+QVector3D Transform::getScale() {
     return m_scale;
 }
 
-void setScale(QVector3D scaleFactor) {
+void Transform::setScale(QVector3D scaleFactor) {
     m_scale = scaleFactor;
 }
 
-void setScale(float scaleFactor) {
+void Transform::setScale(float scaleFactor) {
     m_scale = QVector3D(scaleFactor, scaleFactor, scaleFactor);
 }
 
-void setScale(float x, float y, float z) {
+void Transform::setScale(float x, float y, float z) {
     m_scale = QVector3D(x, y, z);
 }
 
-QVector3D getPosition() {
+QVector3D Transform::getPosition() {
     return m_position;
 }
 
-void setPosition(QVector3D position) {
+void Transform::setPosition(QVector3D position) {
     m_position = position;
 }
 
-void setPosition(float x, float y, float z) {
+void Transform::setPosition(float x, float y, float z) {
     m_position = QVector3D(x, y, z);
 }
 
-QMatrix4x4 getTransformation() {
+QMatrix4x4 Transform::getTransformation() {
     QMatrix4x4 transformation;
+
     transformation.translate(m_position);
     transformation.rotate(m_rotation.angle, m_rotation.rotVec);
     transformation.scale(m_scale);

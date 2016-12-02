@@ -61,6 +61,11 @@ void GameWindow::connectEngine(CoreEngine *engine) {
     m_coreEngine = engine;
 }
 
+void GameWindow::setScene(Scene *scene) {
+    // TODO: error handling
+    m_coreEngine->setScene(scene);
+}
+
 #pragma mark - QWindow // Passing QWindow events to engine
 void GameWindow::keyPressEvent(QKeyEvent *event) {
     m_coreEngine->onKeyPress(event);

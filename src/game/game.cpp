@@ -6,6 +6,8 @@ Game::Game(int argc, char **argv) {
 
     m_gameWindow = new GameWindow();
     m_coreEngine = new CoreEngine();
+    m_scene = new CubicScene();
+    m_scene->initialize();
 }
 
 Game::~Game() {
@@ -13,7 +15,9 @@ Game::~Game() {
 
 int Game::execute() {
     setWindowFormat(WINDOW_WIDTH, WINDOW_HEIGHT);
+
     m_gameWindow->connectEngine(m_coreEngine);
+    m_gameWindow->setScene(m_scene);
 
     m_gameWindow->show();
 

@@ -6,27 +6,31 @@
 class Mesh
 {
 public:
+    Mesh();
+
     Mesh(std::vector<float> vertices,
          std::vector<GLubyte> indices,
          std::vector<float> colors,
          GLenum primitiveType);
 
-    std::vector<float> getVertices();
-    void setVerticies(float getVertices[]);
+    float *getVertices();
+    void setVerticies(std::vector<float> getVertices);
 
-    std::vector<GLubyte> getIndices();
-    void setIndices(float indices[]);
+    GLubyte *getIndices();
+    void setIndices(std::vector<GLubyte> indices);
 
-    std::vector<float> getColors();
-    void setColors(float colors[]);
+    float *getColors();
+    void setColors(std::vector<GLfloat> colors);
 
     GLenum getPrimitiveType();
     void setPrimitiveType(GLenum type);
 
+    GLubyte indicesCount();
+
 protected:
     std::vector<float> m_vertices;
     std::vector<GLubyte> m_indices;
-    std::vector<float> m_colors;
+    std::vector<GLfloat> m_colors;
 
     GLenum m_primitiveType;
 };

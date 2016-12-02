@@ -12,19 +12,18 @@ class RenderSettingsInitializations
 public:
     RenderSettingsInitializations();
 
-    // Setters
+    int width() const;
     void setWidth(int newWidth);
+
+    int height() const;
     void setHeight(int newHeight);
+
     void setDevicePixelRatio(qreal newDevicePixelRatio);
     void setRefreshRate(qreal newRefreshRate);
 
-    // Getters
-    int width() const;
-    int height() const;
     qreal devicePixelRatio() const;
     qreal refreshRate() const;
 
-    // Operators
     RenderSettingsInitializations& operator=( RenderSettingsInitializations& settings );
 
 private:

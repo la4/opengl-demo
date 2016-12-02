@@ -62,6 +62,11 @@ void CoreEngine::setStatus(engineStatus newStatus) {
     m_status = newStatus;
 }
 
+void CoreEngine::setScene(Scene *scene) {
+    m_scene = scene;
+    m_renderingEngine->setScene(scene);
+}
+
 void CoreEngine::passContextToRenderingEngine(QOpenGLContext *context) {
     m_renderingEngine->setContext(context);
 }

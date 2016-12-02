@@ -5,12 +5,13 @@
 
 #include "gamewindow.h"
 #include "coreengine.h"
+#include "cubicscene.h"
 
 class Game
 {
 public:
-    static const int WINDOW_WIDTH = 640;
-    static const int WINDOW_HEIGHT = 480;
+    static const int WINDOW_WIDTH = 1024;
+    static const int WINDOW_HEIGHT = 768;
 
     static Game& mainInstance(int argc, char **argv) {
         static Game gameInstance(argc, argv);
@@ -31,6 +32,7 @@ private:
     QGuiApplication *m_guiApp;
     GameWindow *m_gameWindow;
     CoreEngine *m_coreEngine;
+    Scene *m_scene;
 };
 
 #endif // GAME_H

@@ -1,40 +1,50 @@
 #include "mesh.h"
 
+Mesh::Mesh() {
+}
 
 Mesh::Mesh(std::vector<float> vertices,
      std::vector<GLubyte> indices,
      std::vector<float> colors,
      GLenum primitiveType){
+    m_vertices = vertices;
+    m_indices = indices;
+    m_colors = colors;
+    m_primitiveType = primitiveType;
 }
 
-std::vector<float> Mesh::getVertices() {
-    return m_vertices;
+float *Mesh::getVertices() {
+    return m_vertices.data();
 }
 
-void Mesh::setVerticies(float vertices[]) {
-    m_vertices = vector<float>(vertices, vertices + sizeof(vertices) / sizeof(vertices[0]));
+void Mesh::setVerticies(std::vector<float> vertices) {
+    m_vertices = vertices;
 }
 
-std::vector<GLubyte> Mesh::getIndices() {
-    return m_indices;
+GLubyte *Mesh::getIndices() {
+    return m_indices.data();
 }
 
-void Mesh::setIndices(float indices[]) {
-    m_indices = vector<GLubyte>(indices, indices + sizeof(indices) / sizeof(indices[0]));
+void Mesh::setIndices( std::vector<GLubyte> indices) {
+    m_indices = indices;
 }
 
-std::vector<float> Mesh::getColors() {
-    return m_colors;
+float *Mesh::getColors() {
+    return m_colors.data();
 }
 
-void Mesh::setColors(float colors[]) {
-    m_colors = vector<float>(colors, colors + sizeof(colors) / sizeof(colors[0]));
+void Mesh::setColors(std::vector<GLfloat> colors) {
+    m_colors = colors;
 }
 
-GLenum getPrimitiveType() {
+GLenum Mesh::getPrimitiveType() {
     return m_primitiveType;
 }
 
-void setPrimitiveType(GLenum type) {
+GLubyte Mesh::indicesCount() {
+     return static_cast<GLubyte>(m_indices.size());
+}
+
+void Mesh::setPrimitiveType(const GLenum type) {
     m_primitiveType = type;
 }

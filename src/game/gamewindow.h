@@ -5,10 +5,7 @@
 #include <QtGui/QOpenGLFunctions>
 #include <QScreen>
 #include "coreengine.h"
-
-QT_BEGIN_NAMESPACE
-class QOpenGLContext;
-QT_END_NAMESPACE
+#include "scene.h"
 
 class GameWindow : public QWindow, protected QOpenGLFunctions
 {
@@ -18,6 +15,7 @@ public:
 
     void initialize();
     void connectEngine(CoreEngine *engine);
+    void setScene(Scene *scene);
 
 protected:
     void exposeEvent(QExposeEvent *event) Q_DECL_OVERRIDE;

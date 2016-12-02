@@ -5,8 +5,9 @@
 #include <QtGui/QOpenGLShaderProgram>
 #include <QtGui/qsurface.h>
 
-#include "iprimitiverenderobject.h"
+#include "gameobject.h"
 #include "rendersettingsinitializations.h"
+#include "scene.h"
 
 // QObject inheritance needed for QOpenGLShaderProgram parent
 class RenderingEngine : public QObject
@@ -18,6 +19,7 @@ public:
 
     void render();
 
+    void setScene(Scene *scene);
     void setContext(QOpenGLContext *context);
     void setSurface(QSurface *surface);
 
@@ -34,11 +36,12 @@ private:
     GLuint m_colAttr;
     GLuint m_matrixUniform;
 
+    QMatrix4x4 perspectiveMat;
+
     QOpenGLShaderProgram *m_program;
     int m_frame;
 
-    // Render objects
-    std::vector<IPrimitiveRenderObject*> m_renderingObjects;
+    Scene *m_scene;
 };
 
 #endif // RENDERINGENGINE_H
