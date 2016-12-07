@@ -1,12 +1,12 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-#include "globject.h"
+#include "gameobject.h"
 
-class Cube : public GLObject
+class Cube : public GameObject
 {
 public:
-    Cube(Mesh *mesh, Transform *transform);
+    Cube();
 };
 
 #endif // CUBE_H

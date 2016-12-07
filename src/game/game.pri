@@ -6,8 +6,7 @@ SOURCES += \
     $$PWD/scene.cpp \
     $$PWD/gameobject.cpp \
     $$PWD/cubicscene.cpp \
-    $$PWD/cube.cpp \
-    $$PWD/globject.cpp
+    $$PWD/cube.cpp
 
 HEADERS += \
     $$PWD/game.h \
@@ -15,5 +14,4 @@ HEADERS += \
     $$PWD/scene.h \
     $$PWD/gameobject.h \
     $$PWD/cubicscene.h \
-    $$PWD/cube.h \
-    $$PWD/globject.h
+    $$PWD/cube.h

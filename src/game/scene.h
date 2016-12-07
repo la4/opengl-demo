@@ -3,9 +3,9 @@
 
 #include <list>
 
-#include "globject.h"
+#include "gameobject.h"
 
-typedef std::list<GLObject *> ObjectsContainer;
+typedef std::list<GameObject *> ObjectsContainer;
 
 /* Abstract class with function initialize needed to be overrided by concrete
  * scene instance. This approach allows us to create multiple scenes with
@@ -17,8 +17,8 @@ public:
     virtual ~Scene();
 
     virtual void initialize() = 0;
-    virtual void addObject(GLObject *object);
-    virtual void removeObject(GLObject *object);
+    virtual void addObject(GameObject *object);
+    virtual void removeObject(GameObject *object);
 
     virtual const ObjectsContainer *getObjectsContainer();
 

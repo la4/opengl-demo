@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Cube::Cube(Mesh *mesh, Transform *transform) : GLObject(mesh, transform)
+Cube::Cube()
 {
     const float vertices[] = { -1.0f, 1.0f, 1.0f, //1
                                       1.0f, 1.0f, 1.0f, //2

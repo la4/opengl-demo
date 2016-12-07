@@ -14,7 +14,7 @@
 
 #include "renderingengine.h"
 #include "rendersettingsinitializations.h"
-#include "globject.h"
+#include "gameobject.h"
 
 RenderingEngine::RenderingEngine()
     : m_context(nullptr)
@@ -56,7 +56,7 @@ void RenderingEngine::render() {
     m_program->bind();
 
     for (auto it : *(m_scene->getObjectsContainer())) {
-        GLObject *objectToRender = it;
+        GameObject *objectToRender = it;
 
         QMatrix4x4 resultMat = perspectiveMat;
         resultMat *= objectToRender->getTransform()->getTransformation();
