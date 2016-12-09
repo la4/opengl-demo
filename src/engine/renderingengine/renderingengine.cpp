@@ -47,6 +47,10 @@ void RenderingEngine::initialize(const RenderSettingsInitializations& renderSett
     glDepthFunc(GL_LESS);
 }
 
+Scene *RenderingEngine::getScene() {
+    return this->m_scene;
+}
+
 void RenderingEngine::render() {
     const qreal retinaScale = m_devicePixelRatio;
     glViewport(0, 0, m_renderingWidth * retinaScale, m_renderingHeight * retinaScale);
@@ -55,10 +59,11 @@ void RenderingEngine::render() {
 
     m_program->bind();
 
-    for (auto it : *(m_scene->getObjectsContainer())) {
+    for (auto it : (m_scene->getObjectsContainer())) {
         GameObject *objectToRender = it;
 
-        QMatrix4x4 resultMat = perspectiveMat;
+        QMatrix4x4 resultMat = m_scene->getCameraSet().at(0)->getViewProjection();
+
         resultMat *= objectToRender->getTransform()->getTransformation();
 
         m_program->setUniformValue(m_matrixUniform, resultMat);
@@ -72,7 +77,7 @@ void RenderingEngine::render() {
 
         glDrawElements(objectToRender->getMesh()->getPrimitiveType(),
                        objectToRender->getMesh()->indicesCount(),
-                       GL_UNSIGNED_BYTE,
+                       objectToRender->getMesh()->getIndicesType(),
                        objectToRender->getMesh()->getIndices());
 
         glDisableVertexAttribArray(1);

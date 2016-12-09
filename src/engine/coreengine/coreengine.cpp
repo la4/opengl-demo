@@ -78,8 +78,28 @@ void CoreEngine::passSurfaceToRenderingEngine(QSurface *surface) {
 // TODO: input handling should be probably delegated to PhysicsEngine as being related to modifying game logic
 #pragma mark - IInputHandler // IInputHandler events
 void CoreEngine::onKeyPress( QKeyEvent *event ) {
-    Q_UNUSED(event)
+    //Q_UNUSED(event)
     // Currently not processing this event
+
+    //Made for testing ONLY
+    switch (event->key()) {
+    case Qt::Key_W:
+        this->m_renderingEngine->getScene()->getCameraSet().at(0)->getTransform()->translateByZ(-0.25);
+        break;
+    case Qt::Key_S:
+        this->m_renderingEngine->getScene()->getCameraSet().at(0)->getTransform()->translateByZ(0.25);
+        break;
+    case Qt::Key_A:
+        this->m_renderingEngine->getScene()->getCameraSet().at(0)->getTransform()->translateByX(-0.25);
+        break;
+    case Qt::Key_D:
+        this->m_renderingEngine->getScene()->getCameraSet().at(0)->getTransform()->translateByX(0.25);
+        break;
+
+    default:
+        break;
+    }
+
 }
 
 void CoreEngine::onKeyRelease( QKeyEvent *event ) {
@@ -99,6 +119,7 @@ void CoreEngine::onMouseRelease( QMouseEvent *event ) {
 
 void CoreEngine::onMouseMove( QMouseEvent *event ) {
     Q_UNUSED(event)
+
     // Currently not processing this event
 }
 

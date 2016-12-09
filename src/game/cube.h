@@ -6,7 +6,7 @@
 class Cube : public GameObject
 {
 public:
-    Cube();
+    Cube(Transform *transform, Mesh *mesh);
 };
 
 #endif // CUBE_H

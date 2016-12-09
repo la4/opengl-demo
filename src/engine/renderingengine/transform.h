@@ -1,8 +1,14 @@
 #ifndef TRANSFORM_H
 #define TRANSFORM_H
 
+#include "translatecomponent.h"
 #include <QMatrix4x4>
 
+// Awful >.<
+// You have to figure out what transformation at all
+// I don't like the idea of aggregation, in all cases better to use abstract classes/interfaces
+// In my case I have to implement own implementation of rotation, also i don't need scale
+// In my opinion, there is better to use something like ITranslatable/IRotetable/IScallable
 class RotationValue
 {
 public:
@@ -20,7 +26,9 @@ public:
     float angle;
 };
 
-class Transform
+//TODO: expand Transform: make a bunch of constructors, setters, getter, etc.
+// Bad idea at all, unreasoned implementaion >.<
+class Transform : public TranslateComponent
 {
 public:
     Transform();
@@ -28,12 +36,9 @@ public:
     void rotate(float angle, QVector3D rotation);
     void rotate(float angle, float x, float y, float z);
 
-    void scale(QVector3D scaleFactor);
+    //void scale(QVector3D scaleFactor);
     void scale(float scaleFactor);
     void scale(float x, float y, float z);
-
-    void move(QVector3D shift);
-    void move(float x, float y, float z);
 
     RotationValue getRotation();
     void setRotation(RotationValue rotation);
@@ -45,18 +50,12 @@ public:
     void setScale(float scaleFactor);
     void setScale(float x, float y, float z);
 
-    QVector3D getPosition();
-    void setPosition(QVector3D position);
-    void setPosition(float x, float y, float z);
-
     // TODO: add quaternions and pivot point
 
     QMatrix4x4 getTransformation();
 
-
 private:
-    QVector3D m_position;
-    RotationValue m_rotation;
+    RotationValue m_rotation; // OMG >.<
     QVector3D m_scale;
 };
 

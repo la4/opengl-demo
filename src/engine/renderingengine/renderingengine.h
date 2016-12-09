@@ -10,6 +10,9 @@
 #include "scene.h"
 
 // QObject inheritance needed for QOpenGLShaderProgram parent
+// Dependecies OUTSIDE!!!
+// Make more logical "initialization"
+// Make more logical structure
 class RenderingEngine : public QObject
 {
 public:
@@ -22,6 +25,8 @@ public:
     void setScene(Scene *scene);
     void setContext(QOpenGLContext *context);
     void setSurface(QSurface *surface);
+
+    Scene *getScene();
 
 private:
     QOpenGLContext *m_context;
