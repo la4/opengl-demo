@@ -1,2 +1,2 @@
 # opengl-demo
-A study OpenGL project. 
+A study OpenGL custom rendering engine. Freezed until better days :(
